@@ -1,0 +1,26 @@
+{
+  "name": "L1fe4ux",
+  "version": "1.0.0",
+  "description": "L1fe4ux, a simple aux tool for life",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "L1fe4ux"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nmoya/L1fe4ux"
+  },
+  "author": "Nikolas Moya <nikolasmoya@gmail.com>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "electron-prebuilt": "^0.36.1",
+    "money": "^0.2.0",
+    "node-notifier": "^4.4.0",
+    "open-exchange-rates": "^0.3.0",
+    "remote": "^0.2.6"
+  }
+}
