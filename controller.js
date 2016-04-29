@@ -1,3 +1,4 @@
+'use strict'
 const globalShortcut = require('electron').globalShortcut
 const notifylib = require('./notifications.js')
 const electron = require('electron')

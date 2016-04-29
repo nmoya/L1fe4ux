@@ -1,3 +1,4 @@
+'use strict'
 const keys = require('./keys.js')
 const oxr = require('open-exchange-rates')
 const fx = require('money')
