@@ -48,7 +48,7 @@ var shortcuts = {
     if (!globalShortcut.register(action.hotkey, cbHandler.handle(action))) {
       console.log('Registration failed: ' + action.hotkey)
     } else {
-      console.log('Success: ' + action.hotkey)
+      console.log('Success: ' + action.properties.label)
     }
   },
   registerActions: function () {
