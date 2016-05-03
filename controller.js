@@ -1,37 +1,51 @@
 'use strict'
 const globalShortcut = require('electron').globalShortcut
 const notifylib = require('./notifications.js')
+const clipboard = require('electron').clipboard
 const electron = require('electron')
 const Tray = electron.Tray
 const Menu = electron.Menu
 const C = require('./constants.js')
 
-var actions = [{
-  properties: {
-    label: C.TRAY.EURO,
-    enabled: false
+var cbHandler = {
+  module: function (actionFile) {
+    try {
+      return require(actionFile).handle
+    } catch (e) {
+      console.log('[ERROR] Missing action file: ' + actionFile)
+      return undefined
+    }
   },
-  hotkey: 'Control+e',
-  callback: function () {
-    require('./actions/currency.js').convert('EUR', 'BRL', function (result) {
-      notifications.send(result)
-    })
+  handle: function (action) {
+    switch (action.hotkey) {
+    case C.ACTIONS.CURRENCY.hotkey:
+      return function () {
+        cbHandler.module(action.actionFile)('EUR', 'BRL', function (result) {
+          notifications.send(result)
+        })
+      }
+    case C.ACTIONS.URL_SHORTENER.hotkey:
+      return function () {
+        cbHandler.module(action.actionFile)(clipboard.readText(), function (result) {
+          notifications.send('Short URL copied to clipboard!')
+          clipboard.writeText(result)
+        })
+      }
+    case C.ACTIONS.WEATHER.hotkey:
+      return function () {
+        cbHandler.module(action.actionFile)('Amsterdam', function (result) {
+          notifications.send(result)
+        })
+      }
+    }
   }
-}, {
-  properties: {
-    label: C.TRAY.GIST,
-    enabled: false
-  },
-  hotkey: 'Control+g',
-  callback: function () {
-    console.log('Implement-me')
-  }
-}]
+}
 
 // Public shortcut methods
 var shortcuts = {
   registerAction: function (action) {
-    if (!globalShortcut.register(action.hotkey, action.callback)) {
+    cbHandler.handle(action)
+    if (!globalShortcut.register(action.hotkey, cbHandler.handle(action))) {
       console.log('Registration failed: ' + action.hotkey)
     } else {
       console.log('Success: ' + action.hotkey)
@@ -103,3 +117,5 @@ module.exports = {
   notifications: notifications,
   tray: tray
 }
+
+var actions = require('./actions/actions.js').init(module.exports)
