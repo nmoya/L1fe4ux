@@ -12,9 +12,14 @@
 ### To do
 * [X] Work with simple shortcuts (Ctrl + e, Ctrl + g, etc).
 * [X] See Real vs Euro currency exchange.
-* [ ] Create github gist.
+* [X] Amsterdam weather
+* [X] URL Shortener
+* [ ] Create GitHub gist.
 * [ ] Post a tweet.
-* [ ] Search on PirateBay
+* [ ] Weather in custom city.
+* [ ] Check which actions were configured, disable actions not configured.
+* [ ] Toggle ON/OFF break reminders.
+
 
 ### Known bugs
 * No bugs, I'm good.
