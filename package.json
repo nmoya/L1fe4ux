@@ -21,6 +21,9 @@
     "money": "^0.2.0",
     "node-notifier": "^4.4.0",
     "open-exchange-rates": "^0.3.0",
-    "remote": "^0.2.6"
+    "remote": "^0.2.6",
+    "sprintf": "^0.1.5",
+    "tinyurl": "^1.0.8",
+    "yahoo-weather": "^2.0.1"
   }
 }
