@@ -18,6 +18,11 @@ module.exports = {
       hotkey: 'Control+l',
       actionFile: 'urlshortener.js'
     },
+    PDF: {
+      label: 'Ctrl + P: PDF Creator',
+      hotkey: 'Control+p',
+      actionFile: 'pdfcreator.js'
+    },
     WEATHER: {
       label: 'Ctrl + W: Weather',
       hotkey: 'Control+w',

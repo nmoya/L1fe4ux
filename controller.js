@@ -2,6 +2,7 @@
 const globalShortcut = require('electron').globalShortcut
 const notifylib = require('./notifications.js')
 const clipboard = require('electron').clipboard
+const dialogLib = require('dialog')
 const electron = require('electron')
 const Tray = electron.Tray
 const Menu = electron.Menu
@@ -38,6 +39,20 @@ var cbHandler = {
           clipboard.writeText(result)
         })
       }
+    case C.ACTIONS.PDF.hotkey:
+      return function () {
+        dialog.openFile(function (files) {
+          dialog.saveFile(function (savePath) {
+            if (savePath !== undefined) {
+              cbHandler.module(action.actionFile)(files, savePath, function () {
+                notifications.send('Created: ' + savePath)
+              })
+            } else {
+              notifications.send('Invalid save path')
+            }
+          })
+        })
+      }
     case C.ACTIONS.WEATHER.hotkey:
       return function () {
         cbHandler.module(action.actionFile)('Amsterdam', function (result) {
@@ -63,6 +78,41 @@ var shortcuts = {
   },
   unregisterActions: function () {
     globalShortcut.unregisterAll()
+  }
+}
+
+var dialog = {
+  path: undefined,
+  init: function () {
+    tray.app.focus()
+  },
+  openFile: function (cb) {
+    dialog.init()
+    dialogLib.showOpenDialog({
+        properties: ['openFile', 'multiSelections'],
+        filters: [{
+          name: 'Images',
+          extensions: ['jpg', 'png', 'jpeg']
+        }]
+      },
+      function (files) {
+        if (files) {
+          dialog.path = files[0].substr(0, files[0].lastIndexOf('/'))
+        }
+        cb(files || [])
+      })
+  },
+  saveFile: function (cb) {
+    dialog.init()
+    dialogLib.showSaveDialog({
+      title: 'Choose your destination',
+      defaultPath: dialog.path
+    }, function (file) {
+      cb(file)
+    })
+  },
+  error: function (content) {
+    dialogLib.showErrorBox('[!] ERROR', content)
   }
 }
 
