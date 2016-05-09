@@ -8,6 +8,11 @@ module.exports = {
       hotkey: 'Control+e',
       actionFile: 'currency.js'
     },
+    GIST: {
+      label: 'Ctrl + G: Gist',
+      hotkey: 'Control+g',
+      actionFile: 'gist.js'
+    },
     URL_SHORTENER: {
       label: 'Ctrl + L: URL Shortener',
       hotkey: 'Control+l',

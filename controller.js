@@ -24,6 +24,13 @@ var cbHandler = {
           notifications.send(result)
         })
       }
+    case C.ACTIONS.GIST.hotkey:
+      return function () {
+        cbHandler.module(action.actionFile)(clipboard.readText(), function (result) {
+          notifications.send('Gist URL copied to clipboard!')
+          clipboard.writeText(result)
+        })
+      }
     case C.ACTIONS.URL_SHORTENER.hotkey:
       return function () {
         cbHandler.module(action.actionFile)(clipboard.readText(), function (result) {
