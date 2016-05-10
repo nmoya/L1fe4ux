@@ -14,9 +14,8 @@
 * [X] See Real vs Euro currency exchange.
 * [X] Amsterdam weather
 * [X] URL Shortener
-* [ ] Create GitHub gist.
-* [ ] Post a tweet.
-* [ ] Weather in custom city.
+* [X] Create GitHub gist.
+* [X] Create PDF from selected files.
 * [ ] Check which actions were configured, disable actions not configured.
 * [ ] Toggle ON/OFF break reminders.
 
