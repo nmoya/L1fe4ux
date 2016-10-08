@@ -27,6 +27,11 @@ module.exports = {
       label: 'Ctrl + W: Weather',
       hotkey: 'Control+w',
       actionFile: 'weather.js'
+    },
+    TIME: {
+      label: 'Ctrl + A: Time around the world.',
+      hotkey: 'Control+a',
+      actionFile: 'time.js'
     }
   },
   NOTIFICATIONS: {

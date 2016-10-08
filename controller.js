@@ -59,6 +59,12 @@ var cbHandler = {
           notifications.send(result)
         })
       }
+    case C.ACTIONS.TIME.hotkey:
+      return function () {
+        cbHandler.module(action.actionFile)(function (result) {
+          notifications.send(result)
+        })
+      }
     }
   }
 }

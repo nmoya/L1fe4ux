@@ -26,6 +26,7 @@
     "remote": "^0.2.6",
     "sprintf": "^0.1.5",
     "tinyurl": "^1.0.8",
+    "world-clock": "^1.2.0",
     "yahoo-weather": "^2.0.1"
   }
 }
