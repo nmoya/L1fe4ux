@@ -14,8 +14,8 @@ module.exports = {
       actionFile: 'gist.js'
     },
     URL_SHORTENER: {
-      label: 'Ctrl + L: URL Shortener',
-      hotkey: 'Control+l',
+      label: 'Ctrl + K: URL Shortener',
+      hotkey: 'Control+k',
       actionFile: 'urlshortener.js'
     },
     PDF: {
